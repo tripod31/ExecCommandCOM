@@ -1,0 +1,61 @@
+﻿// ExecCommandCOM.idl : ExecCommandCOM の IDL ソース
+//
+
+// このファイルは、タイプ ライブラリ ([!output SAFE_IDL_NAME].tlb) およびマーシャリング コードを
+// タイプ ライブラリ (ExecCommandCOM.tlb) とマーシャリング コードを生成します。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(5e05d9f6-7671-447c-9d65-9626becf90d5),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IExecCommand : IDispatch
+{
+	[propput, id(1)] HRESULT ExeFile([in] BSTR newVal);
+	[propput, id(2)] HRESULT Arg([in] BSTR newVal);
+	[propget, id(3)] HRESULT Err([out, retval] BSTR* pVal);
+	[propget, id(5)] HRESULT Output([out, retval] BSTR* pVal);
+	[id(6)] HRESULT Exec([out, retval] LONG* pRet);
+};
+[
+	object,
+	uuid(6cce8c8f-264d-4ba2-b56b-e1ce9651bbcb),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ISharedData : IDispatch
+{
+	[id(1)] HRESULT SetData([in] BSTR pStr);
+	[id(2)] HRESULT GetData([out, retval] BSTR* pStr);
+};
+[
+	uuid(b429ec3a-1dd5-4af9-9dc0-27d1d37be517),
+	version(1.0),
+]
+library ExecCommandCOMLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(83c68132-2614-45a7-ad9f-8a71ae718e37)
+	]
+	coclass ExecCommand
+	{
+		[default] interface IExecCommand;
+	};
+	[
+		uuid(45424b12-2f89-476c-b869-8039518b1116)
+	]
+	coclass SharedData
+	{
+		[default] interface ISharedData;
+	};
+};
+
+import "shobjidl.idl";
+import "shobjidl.idl";

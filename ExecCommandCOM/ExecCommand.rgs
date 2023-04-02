@@ -1,0 +1,26 @@
+HKCR
+{
+	ExecCommand.1 = s 'ExecCommand class'
+	{
+		CLSID = s '{83c68132-2614-45a7-ad9f-8a71ae718e37}'
+	}
+	ExecCommand = s 'ExecCommand class'
+	{		
+		CurVer = s 'ExecCommand.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {83c68132-2614-45a7-ad9f-8a71ae718e37} = s 'ExecCommand class'
+		{
+			ProgID = s 'ExecCommand.1'
+			VersionIndependentProgID = s 'ExecCommand'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{b429ec3a-1dd5-4af9-9dc0-27d1d37be517}'
+			Version = s '1.0'
+		}
+	}
+}

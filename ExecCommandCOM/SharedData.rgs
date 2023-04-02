@@ -1,0 +1,26 @@
+HKCR
+{
+	SharedData.1 = s 'SharedData class'
+	{
+		CLSID = s '{45424b12-2f89-476c-b869-8039518b1116}'
+	}
+	SharedData = s 'SharedData class'
+	{		
+		CurVer = s 'SharedData.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {45424b12-2f89-476c-b869-8039518b1116} = s 'SharedData class'
+		{
+			ProgID = s 'SharedData.1'
+			VersionIndependentProgID = s 'SharedData'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{b429ec3a-1dd5-4af9-9dc0-27d1d37be517}'
+			Version = s '1.0'
+		}
+	}
+}
