@@ -1,7 +1,7 @@
 # ExecCommand
 
 ## これは何か
-COMオブジェクトです。ATLを使用。  
+COMオブジェクトです。ATLを使用。クライアントプログラムは64bitのみ対応しています。  
 
 ### **DOS窓を出さずにCUIコマンドを起動する**  
 LibreOfficeのマクロからCUIコマンドを起動して標準出力を得るためにWindowsScriptingHostのCOMオブジェクト(wscript.shell)を使用していました。しかしこれだと起動時にDOS窓が表示されるため、うっとおしい。  
@@ -22,14 +22,7 @@ LibleOffice7.4.5.1 64bit
 execcommand.zipをクリック→Download
 
 ### **DLLのレジストリへの登録・登録解除**
-register.exeを実行する。DLLがregister.exeと違うディレクトリにある場合、パスを指定する。  
-64bitOSで32bitプログラムからDLLを使用するには、register32.exeを使用してDLLを登録する。32bit版のregasm.exeを使用して登録される。
-#### **registerボタン**
-DLLを登録します。エラーが出ても、「型が正常に登録されました。」と表示されればOK。  
-#### **unregisterボタン**
-DLLを登録解除します。
-#### **regfileボタン**
-登録用のレジストリファイルを出力します。
+register.batを管理者で実行する。
 
 ### サンプルファイル
 #### **sample/test.ods**
