@@ -41,7 +41,7 @@ BSTR charToBSTR(char* str_org)
         CP_ACP,			// コードページ ANSI コードページ
         0,			    // 文字の種類を指定するフラグ
         str_org,			// マップ元文字列のアドレス
-        strlen(str_org),	// マップ元文字列のバイト数
+        (int)strlen(str_org),	// マップ元文字列のバイト数
         NULL,			// マップ先ワイド文字列を入れるバッファのアドレス
         0			    // バッファのサイズ
     );
@@ -53,7 +53,7 @@ BSTR charToBSTR(char* str_org)
         CP_ACP,
         0,
         str_org,
-        strlen(str_org),
+        (int)strlen(str_org),
         bstr,
         bstrlen
     );
@@ -76,6 +76,7 @@ STDMETHODIMP CSharedData::GetData(BSTR* pStr)
     strcpy_s(sBuf, SHARED_MEM_SIZE, pMemory);
     BSTR ret = charToBSTR(sBuf);
     *pStr = ret;
+    SysFreeString(ret);
 
     UnmapViewOfFile(pMemory);
     //CloseHandle(hSharedMemory);
